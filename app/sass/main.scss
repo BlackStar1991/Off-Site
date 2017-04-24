@@ -1,0 +1,221 @@
+/*********************************************/
+/*@IMPORTS*/
+/*********************************************/
+@import "vendors/global";
+@import "helpers/global";
+@import "components/global";
+@import "helpers/mixins";
+/*********************************************/
+/*FONTS*/
+/*********************************************/
+
+@include font-face("Rockwell", "../fonts/Rockwell/RockwellRegular/RockwellRegular", normal,normal, eot ttf woff woff2);
+@include font-face("Arial", "../fonts/Arial/ArialRegular/ArialRegular", normal,normal, eot ttf woff woff2);
+
+/*********************************************/
+/*MAIN STYLES*/
+/*********************************************/
+
+body {
+  font-family: "Rockwell", sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  min-width: 320px;
+  position: relative;
+  width: 100%;
+  height: 100%;
+
+  background: #ada6a0 url("../img/background.png") 50% 0 no-repeat;
+
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+a {
+  text-decoration: none;
+  color: $myblack;
+  &:hover,
+  &:focus,
+  &:active{
+    text-decoration: none;
+    color: $myblack;
+  }
+}
+input, input:focus, button{
+  outline: none;
+}
+
+
+/*********************************************/
+/*TYPOGRAPHY*/
+/*********************************************/
+
+/*********************************************/
+/*STICKY FOOTER*/
+/*********************************************/
+
+//.body {
+//  display: flex;
+//  min-height: 100vh;
+//  flex-direction: column;
+//}
+//
+//.main {
+//  flex: 1;
+//}
+
+
+
+
+/*********************************************/
+/*HEADER*/
+/*********************************************/
+
+@import "sections/header";
+
+/*********************************************/
+/*SECTIONS*/
+/*********************************************/
+
+/////////// MAIN
+
+
+.mainWrapper{
+  position: relative;
+  width: 100%;
+  min-width: 320px;
+  height: 100%;
+  padding: 0;
+  margin: 0 !important;
+}
+
+
+
+
+
+.block_image{
+  position: relative;
+  text-align: center;
+  width: 100%;
+  min-height:375px;
+
+  margin-top: 15px;
+
+
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.75);
+  background-color: #fff;
+
+  &__picture{
+
+    min-width:100%;
+
+
+    img{
+      min-width:100%;
+      min-height:375px;
+      padding:15px 12px 13px 11px;
+    }
+  }
+
+}
+
+
+.block_imagesBox{
+  width: 100%;
+
+}
+
+
+.block_minPhoto{
+  //width: 224px;
+  width: 100%;
+  height: 375px;
+  margin-top:17px;
+
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.75);
+  background-color: #fff;
+
+    &__img{
+      display: block;
+      padding-top: 10px;
+      padding-left: 10px;
+      padding-right: 13px;
+      width: 100%;
+    }
+
+    &__articleWrappen{
+      position: relative;
+      width: 100%;
+      height: 125px;
+      margin-top:24px;
+
+      background-color: #fff;
+      overflow: hidden;
+
+      &:nth-of-type(1) .block_minPhoto__articleText{
+        font-family:"Arial",sans-serif;
+      }
+    }
+
+    &__articleText{
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      padding: 0 12px;
+
+      
+    }
+  
+  
+  
+  
+    &__link{
+      display: block;
+      float: right;
+      //margin-top: 30px;
+      margin-right: 12px;
+      color: #000;
+      font-size: 12px;
+      text-decoration: underline;
+
+    }
+
+}
+
+
+.block_welcome{
+  width: 100%;
+  min-height: 187px;
+  margin-top: 15px;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.75);
+  background-color: #fff;
+}
+
+
+
+
+
+
+
+
+
+/*********************************************/
+/*FOOTER*/
+/*********************************************/
+
+@import "sections/footer";
+
+/*********************************************/
+/*@IMPORT MEDIA*/
+/*********************************************/
+
+@import "helpers/media";
