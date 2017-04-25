@@ -37,6 +37,8 @@
   margin-top: 13px; /////////////////////////
   background-color: #fff;
   box-shadow: 0 0 4px rgba(0, 0, 0, 0.75);
+  overflow: hidden;
+
 
   &__full{
 
@@ -47,9 +49,11 @@
   }
 
   &__item{
+
     margin-left: 62px;
     display: inline-block;
-    border: 1px solid red;
+
+    //border: 1px solid red;
 
     &:first-child{
       margin-left: 0;
@@ -89,7 +93,7 @@
       margin-top: 12px;
       margin-right: 13px;
       border: 1px solid rgba(205, 205, 205, 0.38);
-      border: 1px solid red;
+
       background-color: #fff;
 
       &::placeholder{

@@ -7,7 +7,7 @@ var gulp = require("gulp"),                             // gulp core
     gulpif = require('gulp-if'),                        // conditionally run a task
     clean = require('gulp-clean'),                      // removing files and folders
     uglify = require('gulp-uglify'),                    // uglifies the js
-    rename = require("gulp-rename"),                    // rename files
+    rename = require('gulp-rename'),                    // rename files
     useref = require('gulp-useref'),                    // parse build blocks in HTML files to replace references
     minifyCss = require('gulp-minify-css'),             // minify the css files
     autoprefixer = require('gulp-autoprefixer'),        // sets missing browserprefixes
@@ -15,7 +15,7 @@ var gulp = require("gulp"),                             // gulp core
     imagemin = require('gulp-imagemin'),                // minify images
     pngquant = require('imagemin-pngquant'),            // minify png-format images
     spritesmith = require('gulp.spritesmith');          // create sprites
-
+// mainBowerFiles = require('gulp-main-bower-files');  // create mainBOWERfiles
 /*********************************************/
 /*BROWSERSYNC (LOCAL SERVER)*/
 /*********************************************/
@@ -93,6 +93,7 @@ gulp.task('images', ['sprite'], function () {
                 speed: 4
             })],
             interlaced: true
+
         }))
         .pipe(gulp.dest('dist/img'));                   // where to put the files
 });
@@ -126,6 +127,7 @@ gulp.task('extrass', function () {
     ]).pipe(gulp.dest('dist'));                         // where to put the files
 });
 
+
 /*********************************************/
 /*BUILD TASKS*/
 /*********************************************/
@@ -135,17 +137,17 @@ gulp.task('clean', function () {
         .pipe(clean());                                 // clean dir
 });
 
+
 gulp.task('build', ['clean'], function () {
     gulp.start('images');                               // images task
     gulp.start('fonts');                                // fonts task
     gulp.start('libs');                                 // libs task
     gulp.start('extrass');                              // extras task
-    var assets = useref.assets();
+
     return gulp.src('app/*.html')
-        .pipe(assets)
+
         .pipe(gulpif('*.js', uglify()))                 // uglify js-files
         .pipe(gulpif('*.css', minifyCss()))             // minify css-files
-        .pipe(assets.restore())
         .pipe(useref())
         .pipe(gulp.dest('./dist'));                     // where to put the files
 });
@@ -167,3 +169,11 @@ function buildSprite() {
     return spriteData.css.pipe(gulp.dest('./app/sass/components'));
 }
 
+/*********************************************/
+/*mainBOWERfiles */
+/*********************************************/
+
+// gulp.task('TASKNAME', function() {
+//     return gulp.src(mainBowerFiles())
+//         .pipe(gulp.dest('dist/mainfiles'))
+// });

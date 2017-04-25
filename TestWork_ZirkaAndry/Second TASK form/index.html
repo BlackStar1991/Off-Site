@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>OSS Form</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha/css/bootstrap.css"/>
+    <style>
+        label {
+            width: 100px;
+        }
+
+        label.error {
+            color: red;
+        }
+
+        input {
+            border: 1px solid #ccc;
+        }
+
+        input.error {
+            border-color: red;
+        }
+
+        .content {
+            padding: 15px;
+            border: 1px solid #ccc;
+        }
+
+        .good {
+            display: none;
+            margin: 2px 0;
+            font-weight: bold;
+            color: #0f0;
+        }
+
+        .error {
+            display: none;
+            margin: 2px 0;
+            color: #f00;
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="content">
+                <form onsubmit="return myForm()" id="testForm">
+                    <div>
+                        <label for="firstName">First name</label>
+                        <input type="text" id="firstName"/>
+
+                        <span class="good">Ok</span>
+                        <p class="error">Пожалуйста введите свое имя!</p>
+                    </div>
+
+                    <div>
+                        <label for="lastName">Last name</label>
+                        <input type="text" id="lastName"/>
+
+                        <span class="good">Ok</span>
+                        <p class="error">Пожалуйста введите свою фамилию!</p>
+                    </div>
+
+                    <div>
+                        <label for="email">Email</label>
+                        <input type="text" id="email"/>
+
+                        <span class="good">Ok</span>
+                        <p class="error">Неправильно заданный адрес почты</p>
+                    </div>
+
+                    <button type="submit">Send</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function myForm() {
+        var firstName = document.getElementById("firstName"),
+            lastName = document.getElementById("lastName"),
+            email = document.getElementById("email"),
+
+            ok = document.querySelectorAll(".good"),
+            error = document.querySelectorAll(".error");
+
+        var valid = true;
+
+        var em = email.value.match(/^[0-9a-z-\.]+\@[0-9a-z-]{2,}\.[a-z]{2,}$/i);
+
+        if (firstName.value =='') {
+            error[0].style.display = "block";
+
+            valid = false;
+        } else {
+            ok[0].style.display = "inline";
+        }
+        if (lastName.value =='') {
+            error[1].style.display = "block";
+            valid = false;
+        } else {
+            ok[1].style.display = "inline";
+        }
+        if ((email.value =='') || (!em)) {
+            error[2].style.display = "block";
+
+            valid = false;
+        }
+        else {
+            ok[2].style.display = "inline";
+        }
+
+        if(valid==true){
+            alert("Поздравляю, поля заполнены корректно")
+        }
+
+        return valid
+    }
+
+
+    // Хотя проще, конечно было б добавить полям input атрибут required , а поле с input type="text" заменить на input type="email"
+    // https://habrahabr.ru/post/175375/
+</script>
+
+</body>
+</html>
